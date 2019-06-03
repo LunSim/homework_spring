@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <!--Call fragment-->
+    <th:block th:replace="fragment/style"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <!--Navbar -->
+    <div th:replace="fragment/navbar :: navbar"></div>
+    <!--/.Navbar -->
+    <!--table.table.table-stripped>(thead.thead-dark>tr>th*6)+(tbody)-->
+    <button type="button" class="btn btn-primary">ADD</button>
+    <table class="table table-sm table-stripped">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Description</th>
+            <th>Thumbnail</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>lOVE</td>
+            <td>SIM</td>
+            <td>LIKE</td>
+            <td>IMAGE</td>
+            <td>
+                <a href="" data-toggle="tooltip" data-placement="top"
+                   title="View"><i class="far fa-2x fa-eye"></i></a>
+                <a href="" data-toggle="tooltip" data-placement="top"
+                   title="Edit"><i class="far fa-2x text-primary fa-edit"></i></a>
+                <a href="" data-toggle="tooltip" data-placement="top"
+                   title="delete"><i class="far fa-2x text-danger fa-trash-alt"></i></a>
+                <!--<button type="button" class="btn btn-outline-primary waves-effect">Primary</button>-->
+                <!--<button type="button" class="btn btn-outline-success waves-effect">Success</button>-->
+                <!--<button type="button" class="btn btn-outline-danger waves-effect">Danger</button>-->
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <p>Total Record:</p>
+</div>
+
+<th:block th:replace="fragment/script"></th:block>
+</body>
+</html>
