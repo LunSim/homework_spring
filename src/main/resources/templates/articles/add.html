@@ -36,11 +36,10 @@
                             <label for="">Description</label>
                             <input type="text" class="form-control" th:field="${article.description}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group ">
                             <label for="">Thumbnail</label>
-                            <!--<input type="file" class="form-control" th:field="${article.description}">-->
                             <input type='file' id="imgInp"/>
-                            <img id="blah" src="#" style=" height: auto; width: 200px; display: block" alt="your image"/>
+                            <img id="thumbnail" src="#" style=" height: auto; width: 200px; margin: 0 auto; display: block" alt=""/>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -63,7 +62,7 @@
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result);
+                $('#thumbnail').attr('src', e.target.result);
             }
 
             reader.readAsDataURL(input.files[0]);

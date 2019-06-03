@@ -14,7 +14,7 @@
     <div th:replace="fragment/navbar :: navbar"></div>
     <!--/.Navbar -->
     <!--table.table.table-stripped>(thead.thead-dark>tr>th*6)+(tbody)-->
-    <button type="button" class="btn btn-primary">ADD</button>
+    <a th:href="@{/articles/add}" class="btn btn-sm btn-danger">ADD</a>
     <table class="table table-sm table-stripped">
         <thead class="thead-dark">
         <tr>
