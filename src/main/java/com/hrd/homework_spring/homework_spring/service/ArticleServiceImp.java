@@ -9,25 +9,24 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class ArticleServiceImp implements ArticleService {
-    @Autowired
-    private ArticleRepository articleRepository;
-    @Override
-    public void add(Article article) {
 
+    @Override
+    public boolean add(Article article) {
+        return false;
     }
 
     @Override
-    public void delete(Article article) {
-
+    public Article delete(Article article) {
+        return null;
     }
 
     @Override
-    public void update(Article article) {
-
+    public boolean update(Article article) {
+        return false;
     }
 
     @Override
-    public Article view(Article article) {
+    public Article view(int id) {
         return null;
     }
 

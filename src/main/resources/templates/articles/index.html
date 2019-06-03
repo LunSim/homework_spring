@@ -9,10 +9,7 @@
 </head>
 <body>
 <div class="container-fluid">
-    <!--Navbar -->
-    <!--upload by sokha-->
     <div th:replace="fragment/navbar :: navbar"></div>
-    <!--/.Navbar -->
     <!--table.table.table-stripped>(thead.thead-dark>tr>th*6)+(tbody)-->
     <a th:href="@{/articles/add}" class="btn btn-sm btn-danger">ADD</a>
     <table class="table table-sm table-stripped">
@@ -36,18 +33,16 @@
             <td>
                 <a href="" data-toggle="tooltip" data-placement="top"
                    title="View"><i class="far fa-2x fa-eye"></i></a>
-                <a href="" data-toggle="tooltip" data-placement="top"
+                <a th:href="@{/articles/update}" data-toggle="tooltip" data-placement="top"
                    title="Edit"><i class="far fa-2x text-primary fa-edit"></i></a>
                 <a href="" data-toggle="tooltip" data-placement="top"
                    title="delete"><i class="far fa-2x text-danger fa-trash-alt"></i></a>
             </td>
-
         </tr>
         </tbody>
     </table>
     <p>Total Record:</p>
 </div>
-
 <th:block th:replace="fragment/script"></th:block>
 </body>
 </html>

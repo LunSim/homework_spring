@@ -7,24 +7,24 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public class ArticleRepositoryImp implements ArticleRepository {
-    private List<Article> articleList;
+
     @Override
-    public void add(Article article) {
-        articleList.add(article);
+    public boolean add(Article article) {
+        return false;
     }
 
     @Override
-    public void delete(Article article) {
-
+    public Article delete(Article article) {
+        return null;
     }
 
     @Override
-    public void update(Article article) {
-
+    public boolean update(Article article) {
+        return false;
     }
 
     @Override
-    public Article view(Article article) {
+    public Article view(int id) {
         return null;
     }
 

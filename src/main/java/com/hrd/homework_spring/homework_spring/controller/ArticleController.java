@@ -11,6 +11,7 @@ public class ArticleController {
 
     @Autowired
     private ArticleService articleService;
+
     @GetMapping("/articles")
     public String index(ModelMap modelMap){
         modelMap.addAttribute("article",articleService.findAll());
@@ -21,5 +22,11 @@ public class ArticleController {
     public String addform(ModelMap modelMap){
         modelMap.addAttribute("article", new Article());
         return "/articles/add";
+    }
+
+    @GetMapping("/articles/update")
+    public String updateForm(ModelMap modelMap){
+        modelMap.addAttribute("article", new Article());
+        return "/articles/update";
     }
 }
