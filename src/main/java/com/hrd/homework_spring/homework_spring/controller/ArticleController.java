@@ -29,4 +29,9 @@ public class ArticleController {
         modelMap.addAttribute("article", new Article());
         return "/articles/update";
     }
+    @GetMapping("/articles/view")
+    public String viewForm(ModelMap modelMap){
+        modelMap.addAttribute("article", new Article());
+        return "/articles/view";
+    }
 }
