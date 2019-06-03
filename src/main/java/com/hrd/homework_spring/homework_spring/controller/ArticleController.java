@@ -11,6 +11,7 @@ public class ArticleController {
 
     @Autowired
     private ArticleService articleService;
+
     @GetMapping("/articles")
     public String index(ModelMap modelMap){
         modelMap.addAttribute("article",articleService.findAll());
@@ -18,8 +19,10 @@ public class ArticleController {
     }
 
     @GetMapping("/articles/add")
-    public String addform(ModelMap modelMap){
-        modelMap.addAttribute("article", new Article());
-        return "/articles/add";
+    public String addForm(ModelMap modelMap){
+        Article article = new Article();
+        System.out.println("OKKJFSDKF");
+        modelMap.addAttribute("article", article);
+        return "articles/create";
     }
 }

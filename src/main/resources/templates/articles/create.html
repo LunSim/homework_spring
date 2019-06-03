@@ -12,32 +12,32 @@
     <!--Navbar -->
     <div th:replace="fragment/navbar :: navbar"></div>
     <!--/.Navbar -->
-    <form th:method="post" th:object="${article}" enctype="multipart/form-data">
+    <form th:method="post"  enctype="multipart/form-data" th:object="${article}">
         <div class="row  mt-3">
             <div class="col col-lg-8 offset-2">
                 <div class="card">
                     <div class="card-header">
-                        <head class="card-title d-flex justify-content-center">Article Management</head>
+                        <header class="card-title d-flex justify-content-center">Article Management</header>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="">ID</label>
-                            <input type="text" class="form-control" disabled th:field="${article.id}">
+                            <label >ID</label>
+                            <input type="text" class="form-control" disabled th:field="${article.id}" th:value="${article.id}">
                         </div>
                         <div class="form-group">
-                            <label for="">Title</label>
+                            <label >Title</label>
                             <input type="text" class="form-control" th:field="${article.title}">
                         </div>
                         <div class="form-group">
-                            <label for="">Author</label>
+                            <label >Author</label>
                             <input type="text" class="form-control" th:field="${article.author}">
                         </div>
                         <div class="form-group">
-                            <label for="">Description</label>
+                            <label >Description</label>
                             <input type="text" class="form-control" th:field="${article.description}">
                         </div>
                         <div class="form-group ">
-                            <label for="">Thumbnail</label>
+                            <label >Thumbnail</label>
                             <input type='file' id="imgInp"/>
                             <img id="thumbnail" src="#" style=" height: auto; width: 200px; margin: 0 auto; display: block" alt=""/>
                         </div>
