@@ -5,9 +5,9 @@ import com.hrd.homework_spring.homework_spring.repository.model.Article;
 import java.util.List;
 
 public interface ArticleService {
-    boolean add(Article article);
-    Article delete(Article article);
-    boolean update(Article article);
+    void add(Article article);
+    void update(Article article);
+    void delete(int id);
     Article view(int id);
     List<Article> findAll();
 }

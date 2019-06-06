@@ -2,36 +2,114 @@ package com.hrd.homework_spring.homework_spring.controller;
 
 import com.hrd.homework_spring.homework_spring.repository.model.Article;
 import com.hrd.homework_spring.homework_spring.service.ArticleService.ArticleService;
+import com.hrd.homework_spring.homework_spring.service.ArticleServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.codec.multipart.Part;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.UUID;
+
 @Controller
 public class ArticleController {
+    private String images;
 
-    @Autowired
     private ArticleService articleService;
 
-    @GetMapping("/articles")
-    public String index(ModelMap modelMap){
-        modelMap.addAttribute("article",articleService.findAll());
+    @Autowired
+    public void setArticleService(ArticleService articleService) {
+        this.articleService = articleService;
+    }
+
+    @GetMapping("/")
+    public String index(ModelMap modelMap) {
+        modelMap.addAttribute("articles", articleService.findAll());
         return "/articles/index";
     }
 
-    @GetMapping("/articles/add")
-    public String addform(ModelMap modelMap){
-        modelMap.addAttribute("article", new Article());
+    @GetMapping("/add")
+    public String addForm(ModelMap modelMap) {
+        Article article = new Article();
+        article.setId(((ArticleServiceImp) articleService).getId());
+        modelMap.addAttribute("article", article);
         return "/articles/add";
     }
 
-    @GetMapping("/articles/update")
-    public String updateForm(ModelMap modelMap){
-        modelMap.addAttribute("article", new Article());
+    @PostMapping("/add/ready")
+    public String actionAddForm(@ModelAttribute Article article, @RequestParam MultipartFile file) {
+        if (!file.isEmpty()) {
+            configFileName(article, file);
+            articleService.add(article);
+            return "redirect:/";
+        } else {
+            configFileName(article, file);
+            article.setImage("placeholder.png");
+            articleService.add(article);
+
+        }
+        return "redirect:/";
+    }
+
+    @GetMapping("/view/{id}")
+    public String getView(ModelMap modelMap,@PathVariable int id){
+        Article article = articleService.view(id);
+        if (article != null){
+            modelMap.addAttribute("article", article);
+        }
+        return "/articles/view";
+    }
+
+    @GetMapping("/update/{id}")
+    public String updateForm(ModelMap modelMap, @PathVariable int id){
+        Article article = articleService.view(id);
+        if (article != null){
+            images = article.getImage();
+            modelMap.addAttribute("article",article);
+        }
         return "/articles/update";
     }
-    @GetMapping("/articles/view")
-    public String viewForm(ModelMap modelMap){
-        modelMap.addAttribute("article", new Article());
-        return "/articles/view";
+    @PostMapping("/update/ready")
+    public String actionUpdate(@ModelAttribute Article article,@RequestParam MultipartFile file){
+        configFileName(article,file);
+        articleService.update(article);
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String getDelete(@PathVariable int id){
+        articleService.delete(id);
+        return "redirect:/";
+    }
+
+    private void configFileName(Article article, MultipartFile file) {
+        String fileName = UUID.randomUUID().toString();
+        String extension;
+        if (file != null && file.getOriginalFilename() != null) {
+            if (!file.getOriginalFilename().isEmpty()) {
+                extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
+                fileName += extension;
+                try {
+                    Files.copy(file.getInputStream(), Paths.get("src/main/resources/static/image/" + fileName));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                article.setImage(fileName);
+                return;
+            }
+        }
+//        else
+//            article.setImage("placeholder.png");
+        if(images != null) {
+            article.setImage(images);
+            images = null;
+        }
+        else
+            article.setImage("placeholder.png");
     }
 }

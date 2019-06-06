@@ -12,7 +12,7 @@
     <!--Navbar -->
     <div th:replace="fragment/navbar :: navbar"></div>
     <!--/.Navbar -->
-    <form th:method="post" th:object="${article}" enctype="multipart/form-data">
+    <form action="/update/ready" th:method="post" th:object="${article}" enctype="multipart/form-data">
         <div class="row  mt-3">
             <div class="col col-lg-8 offset-2">
                 <div class="card">
@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">ID</label>
-                            <input type="text" class="form-control" disabled th:field="${article.id}">
+                            <input type="text" class="form-control" readonly="readonly" th:field="${article.id}">
                         </div>
                         <div class="form-group">
                             <label for="">Title</label>
@@ -36,37 +36,42 @@
                             <label for="">Description</label>
                             <input type="text" class="form-control" th:field="${article.description}">
                         </div>
-                        <div class="form-group ">
-                            <label for="">Thumbnail</label>
-                            <input type='file' id="imgInp"/>
-                            <img id="thumbnail" src="#" style=" height: auto; width: 200px; margin: 0 auto; display: block" alt=""/>
+                        <p>Thumbnail</p>
+                        <div class="custom-file">
+                            <input type="file" name="file" id="selector" class="custom-file-label" accept="image/*">
+                            <label class="custom-file-label" for="selector">Chose Picture</label>
+                        </div>
+                        <div class="container" style="text-align: center;">
+                            <img id="img-preview" width="600px" th:src="'/img/' + ${article.image}" >
                         </div>
                     </div>
+
                     <div class="card-footer">
                         <button type="submit" class="btn btn-sm btn-primary">ADD</button>
-                        <a th:href="@{/articles}" class="btn btn-sm btn-danger">Go Back</a>
+                        <a th:href="@{/}" class="btn btn-sm btn-danger">Go Back</a>
                     </div>
                 </div>
             </div>
         </div>
     </form>
 
-
 </div>
 <th:block th:replace="fragment/script"></th:block>
 <script>
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#thumbnail').attr('src', e.target.result);
+    $(document).ready(function () {
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#img-preview').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
             }
-            reader.readAsDataURL(input.files[0]);
         }
-    }
-    $("#imgInp").change(function () {
-        readURL(this);
+
+        $("#selector").change(function () {
+            readURL(this);
+        });
     });
 </script>
 </body>

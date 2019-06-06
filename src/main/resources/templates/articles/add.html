@@ -11,9 +11,9 @@
 <div class="container-fluid" style=" padding-right: 0; padding-left: 0;">
     <!--Navbar -->
     <div th:replace="fragment/navbar :: navbar"></div>
-    <!--/.Navbar -->
+
     <dvi class="col col-lg-8 offset-2">
-    <form th:method="post" th:object="${article}" enctype="multipart/form-data">
+    <form action="/add/ready" th:method="post" th:object="${article}" enctype="multipart/form-data">
         <div class="row  mt-3">
             <div class="col col-lg-8 offset-2">
                 <div class="card">
@@ -23,24 +23,27 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">ID</label>
-                            <input type="text" class="form-control" disabled th:field="${article.id}">
+                            <input type="text" class="form-control" readonly="readonly" th:field="*{id}">
                         </div>
                         <div class="form-group">
                             <label for="">Title</label>
-                            <input type="text" class="form-control" th:field="${article.title}">
+                            <input type="text" class="form-control" th:field="*{title}">
                         </div>
                         <div class="form-group">
                             <label for="">Author</label>
-                            <input type="text" class="form-control" th:field="${article.author}">
+                            <input type="text" class="form-control" th:field="*{author}">
                         </div>
                         <div class="form-group">
                             <label for="">Description</label>
-                            <input type="text" class="form-control" th:field="${article.description}">
+                            <input type="text" class="form-control" th:field="*{description}">
                         </div>
-                        <div class="form-group ">
-                            <label for="">Thumbnail</label>
-                            <input type='file' id="imgInp"/>
-                            <img id="thumbnail" src="#" style=" height: auto; width: 200px; margin: 0 auto; display: block" alt=""/>
+                        <p>Thumbnail</p>
+                        <div class="custom-file">
+                            <input type="file" name="file" id="picture" class="custom-file-label" accept="image/*">
+                            <label class="custom-file-label" for="picture">Chose Picture</label>
+                        </div>
+                        <div class="container" style="text-align: center;">
+                            <img id="thumbnail" th:src="'/image/' + ${article.image}" style=" height: auto; width: 600px; margin: 0 auto; display: block" alt=""/>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -48,12 +51,13 @@
                         <a th:href="@{/articles}" class="btn btn-sm btn-danger">Go Back</a>
                     </div>
                 </div>
+
             </div>
         </div>
     </form>
     </dvi>
-
 </div>
+
 <th:block th:replace="fragment/script"></th:block>
 <script>
     function readURL(input) {
@@ -65,7 +69,7 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-    $("#imgInp").change(function () {
+    $("#picture").change(function () {
         readURL(this);
     });
 </script>

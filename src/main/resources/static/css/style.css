@@ -1,0 +1,25 @@
+.body{
+    background-color: black;
+}
+
+thead.thead-dark {
+    text-align: center;
+    font-family: monospace;
+}
+
+img#thumbnail {
+    width: 100px !important;
+    height: 49px !important;
+}
+
+tbody {
+    text-align: center !important;
+}
+
+nav.mb-1.navbar.navbar-expand-lg.navbar-dark.orange.lighten-1 {
+    background: #423a63 !important;
+}
+.Card-Controll {
+    width: 1200px;
+    margin: 0 auto;
+}

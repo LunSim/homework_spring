@@ -1,5 +1,4 @@
 package com.hrd.homework_spring.homework_spring.service;
-
 import com.hrd.homework_spring.homework_spring.repository.ArticleRepository.ArticleRepository;
 import com.hrd.homework_spring.homework_spring.repository.model.Article;
 import com.hrd.homework_spring.homework_spring.service.ArticleService.ArticleService;
@@ -10,28 +9,48 @@ import java.util.List;
 @Service
 public class ArticleServiceImp implements ArticleService {
 
-    @Override
-    public boolean add(Article article) {
-        return false;
+    private ArticleRepository articleRepository;
+
+    @Autowired
+    public void setArticleRepository(ArticleRepository articleRepository) {
+        this.articleRepository = articleRepository;
     }
 
     @Override
-    public Article delete(Article article) {
-        return null;
+    public void add(Article article) {
+        if (article != null){
+            articleRepository.add(article);
+        }
     }
 
     @Override
-    public boolean update(Article article) {
-        return false;
+    public void update(Article article) {
+        if (article != null){
+            articleRepository.update(article);
+        }
+    }
+
+    @Override
+    public void delete(int id) {
+        articleRepository.delete(id);
     }
 
     @Override
     public Article view(int id) {
-        return null;
+        return articleRepository.view(id);
     }
 
     @Override
     public List<Article> findAll() {
-        return null;
+        return articleRepository.findAll();
+    }
+    public int getId() {
+        List<Article> articles = articleRepository.findAll();
+        int size = articles.size();
+        if(size <= 0) {
+            return 1;
+        } else {
+            return articles.get(size - 1).getId() + 1;
+        }
     }
 }
