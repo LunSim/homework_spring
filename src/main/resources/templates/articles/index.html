@@ -11,17 +11,17 @@
 <div class="container-fluid" style="padding-right: 0; padding-left: 0;">
     <div th:replace="fragment/navbar :: navbar"></div>
     <div class="Card-Controll">
-        <a th:href="@{/add}" class="btn btn-sm btn-danger">ADD</a>
+        <a th:href="@{/add}" class="btn btn-sm btn-danger" th:text="#{btn.add}">ADD NEW ARTICLE</a>
         <div class="card">
             <table class="table table-sm table-stripped">
                 <thead class="thead-dark">
                 <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Description</th>
-                    <th>Thumbnail</th>
-                    <th>Action</th>
+                    <th th:text="#{st.id}">ID</th>
+                    <th th:text="#{st.title}">Title</th>
+                    <th th:text="#{st.author}">Author</th>
+                    <th th:text="#{st.des}">Description</th>
+                    <th th:text="#{st.thumbnail}">Thumbnail</th>
+                    <th th:text="#{st.action}">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -45,7 +45,7 @@
                 </tr>
                 </tbody>
             </table>
-            <p style="text-indent: 31px;" ​​>Total Record:<span th:text="${#lists.size(articles)}"></span></p>
+            <i style="text-indent: 31px;" th:text="#{st.total_record}" ​​>Total Record:</i><h6 th:text="${#lists.size(articles)}"></h6>
         </div>
     </div>
 </div>
