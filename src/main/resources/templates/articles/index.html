@@ -11,17 +11,17 @@
 <div class="container-fluid" style="padding-right: 0; padding-left: 0;">
     <div th:replace="fragment/navbar :: navbar"></div>
     <div class="Card-Controll">
-        <a th:href="@{/add}" class="btn btn-sm btn-danger" th:text="#{btn.add}">ADD NEW ARTICLE</a>
-        <div class="card">
+        <a th:href="@{/add}" class="btn btn-sm btn-danger" th:text="#{btn.add_new_article}">ADD NEW ARTICLE</a>
+        <div class="card" style="border-radius: 50px 50px 0 0 !important;">
             <table class="table table-sm table-stripped">
                 <thead class="thead-dark">
                 <tr>
-                    <th th:text="#{st.id}">ID</th>
+                    <th style=" border-radius: 50px 0 0 0;"   th:text="#{st.id}">ID</th>
                     <th th:text="#{st.title}">Title</th>
                     <th th:text="#{st.author}">Author</th>
                     <th th:text="#{st.des}">Description</th>
                     <th th:text="#{st.thumbnail}">Thumbnail</th>
-                    <th th:text="#{st.action}">Action</th>
+                    <th style=" border-radius: 0px 50px 0 0px;" th:text="#{st.action}">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,18 +36,24 @@
                     </td>
                     <td>
                         <a th:href="@{/view/{id}(id=${article.id})}" data-toggle="tooltip" data-placement="top"
-                           title="View"><i class="far fa-2x fa-eye"></i></a>
+                           title="View Article"><i class="far fa-2x fa-eye"></i></a>
                         <a th:href="@{/update/{id}(id=${article.id})}" data-toggle="tooltip" data-placement="top"
-                           title="Edit"><i class="far fa-2x text-primary fa-edit"></i></a>
+                           title="Update Article"><i class="far fa-2x text-primary fa-edit"></i></a>
                         <a th:href="@{/delete/{id}(id=${article.id})}" data-toggle="tooltip" data-placement="top"
-                           title="delete"><i class="far fa-2x text-danger fa-trash-alt"></i></a>
+                           title="Delete Article"><i class="far fa-2x text-danger fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 </tbody>
             </table>
-            <i style="text-indent: 31px;" th:text="#{st.total_record}" ​​>Total Record:</i><h6 th:text="${#lists.size(articles)}"></h6>
+            <p style="text-indent: 31px;" th:text="#{st.total_record(${#lists.size(articles)})}" ​​>Total Record:</p>
+            <div class="col-md-7" th:insert="fragment/pagination :: pagination" style="    margin: 0 auto;  max-width: 33.333333%;"></div>
         </div>
     </div>
+    <!--todo
+     will fix again when use with layout
+    -->
+    <footer class="page-footer font-small text-font"th:include="~{fragment/footer ::footer}" >
+    </footer>
 </div>
 <th:block th:replace="fragment/script"></th:block>
 </body>

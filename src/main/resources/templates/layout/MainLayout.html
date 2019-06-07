@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home Page</title>
+        <!--Call fragment-->
+        <th:block th:replace="fragment/style"></th:block>
+    </head>
+<body>
+
+    <div th:replace="fragment/navbar :: navbar"></div>
+
+    <footer class="page-footer font-small text-font"th:include="~{fragment/footer ::footer}"></footer>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#thumbnail').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#picture").change(function () {
+            readURL(this);
+        });
+    </script>
+</body>
+</html>

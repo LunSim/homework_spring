@@ -23,3 +23,8 @@ nav.mb-1.navbar.navbar-expand-lg.navbar-dark.orange.lighten-1 {
     width: 1200px;
     margin: 0 auto;
 }
+.table .thead-dark th{
+    color: #fff;
+    background-color: #423a63 !important;
+    border-color: #423a63 !important;
+}

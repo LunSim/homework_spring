@@ -7,37 +7,38 @@
     <!--Call fragment-->
     <th:block th:replace="fragment/style"></th:block>
 </head>
+<!--TODO-->
+<!--should delete head here becos we call it at MainLayout all-->
 <body>
 <div class="container-fluid" style=" padding-right: 0; padding-left: 0;">
     <!--Navbar -->
     <div th:replace="fragment/navbar :: navbar"></div>
-
     <dvi class="col col-lg-8 offset-2">
     <form action="/add/ready" th:method="post" th:object="${article}" enctype="multipart/form-data">
         <div class="row  mt-3">
             <div class="col col-lg-8 offset-2">
                 <div class="card">
                     <div class="card-header">
-                        <head class="card-title d-flex justify-content-center">Article Management</head>
+                        <head class="card-title d-flex justify-content-center" th:text="#{st.add.article_mgt}">Article Management</head>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="">ID</label>
+                            <label th:text="#{st.id}">ID</label>
                             <input type="text" class="form-control" readonly="readonly" th:field="*{id}">
                         </div>
                         <div class="form-group">
-                            <label for="">Title</label>
+                            <label th:text="#{st.title}">TITLE</label>
                             <input type="text" class="form-control" th:field="*{title}">
                         </div>
                         <div class="form-group">
-                            <label for="">Author</label>
+                            <label th:text="#{st.author}">Author</label>
                             <input type="text" class="form-control" th:field="*{author}">
                         </div>
                         <div class="form-group">
-                            <label for="">Description</label>
+                            <label th:text="#{st.des}">Description</label>
                             <input type="text" class="form-control" th:field="*{description}">
                         </div>
-                        <p>Thumbnail</p>
+                        <p th:text="#{st.thumbnail}">Thumbnail</p>
                         <div class="custom-file">
                             <input type="file" name="file" id="picture" class="custom-file-label" accept="image/*">
                             <label class="custom-file-label" for="picture">Chose Picture</label>
@@ -47,8 +48,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-sm btn-primary">ADD</button>
-                        <a th:href="@{/articles}" class="btn btn-sm btn-danger">Go Back</a>
+                        <button type="submit" class="btn btn-sm btn-primary" th:text="#{st.add.btnAdd}">ADD</button>
+                        <a th:href="@{/}" class="btn btn-sm btn-danger"​​ th:text="#{st.add.btnBack}">Go Back</a>
                     </div>
                 </div>
 
