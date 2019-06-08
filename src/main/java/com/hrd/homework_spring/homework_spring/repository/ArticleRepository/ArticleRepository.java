@@ -10,4 +10,6 @@ public interface ArticleRepository {
     void delete(int id);
     Article view(int id);
     List<Article> findAll();
+    public List<Article> paginate(int page, int limit);
+    int getLastId();
 }

@@ -41,6 +41,11 @@ public class ArticleServiceImp implements ArticleService {
     }
 
     @Override
+    public List<Article> paginate(int page, int limit){
+        return articleRepository.paginate(page, limit);
+    }
+
+    @Override
     public List<Article> findAll() {
         return articleRepository.findAll();
     }
@@ -52,5 +57,10 @@ public class ArticleServiceImp implements ArticleService {
         } else {
             return articles.get(size - 1).getId() + 1;
         }
+    }
+
+    @Override
+    public int getLastId() {
+        return articleRepository.getLastId();
     }
 }

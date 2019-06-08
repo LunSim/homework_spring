@@ -1,0 +1,22 @@
+.col-md-7 {
+    margin: 0px auto;
+    max-width: 21.333333% !important;
+    /*background: #ff3547;*/
+    color: #fff;
+}
+a.page-link.waves-effect.waves-effect {
+    background: #ffeaec94;
+    margin: 0 auto;
+}
+.pagination .page-item.active .page-link {
+    background-color: #423a63 !important;
+    border-radius: 50%;
+}
+
+.pagination .page-item.active .page-link:hover {
+    background-color: #ff3547 !important;
+}
+.pagination .page-item .page-link:hover {
+    border-radius: 50%;
+    text-align: center;
+}

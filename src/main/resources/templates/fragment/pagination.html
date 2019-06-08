@@ -1,27 +1,24 @@
 <div th:fragment="pagination">
-<div class="dataTables_paginate paging_simple_numbers" id="dtBasicExample_paginate">
+<div class="dataTables_paginate paging_simple_numbers" id="page">
     <ul class="pagination">
-        <li class="paginate_button page-item previous" id="dtBasicExample_previous">
-            <a href="#" aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link" >Previous</a>
+
+        <li class="paginate_button page-item previous" id="pre-id">
+            <a th:href="@{/(page = ${currentPage}-1,limit=10)}" class="page-link" ><i class="fas fa-chevron-circle-left"></i></i></a>
         </li>
-        <li class="paginate_button page-item ">
-            <a href="#" aria-controls="dtBasicExample" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+
+        <li class="paginate_button page-item" th:each="page_num : ${#numbers.sequence(1, 5)}"
+            th:classappend="${currentPage eq page_num}? 'active' : ''">
+            <a class="page-link" th:href="@{/(page = ${page_num}, limit = 10)}" th:text="${page_num}" tabindex="1"></a>
         </li>
-        <li class="paginate_button page-item ">
-            <a href="#" aria-controls="dtBasicExample" data-dt-idx="2" tabindex="0" class="page-link">2</a>
+
+        <li class="paginate_button page-item next" id="next-id">
+            <a th:href="@{/(page = ${currentPage} + 1,limit=10)}" aria-controls="dtBasicExample" data-dt-idx="7" tabindex="0" class="page-link" ><i class="fas fa-chevron-circle-right"></i></a>
         </li>
-        <li class="paginate_button page-item active">
-            <a href="#" aria-controls="dtBasicExample" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-        </li>
-        <li class="paginate_button page-item ">
-            <a href="#" aria-controls="dtBasicExample" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-        </li>
-        <li class="paginate_button page-item ">
-            <a href="#" aria-controls="dtBasicExample" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-        </li>
-        <li class="paginate_button page-item next" id="dtBasicExample_next">
-            <a href="#" aria-controls="dtBasicExample" data-dt-idx="7" tabindex="0" class="page-link" >Next</a>
-        </li>
+
+        <!--todo* Will do more-->
+        <!--<li class="page-item">-->
+            <!--<a th:href="@{/(page = ${lastPages}, limit = 10)}" class="page-link">Last Page</a>-->
+        <!--</li>-->
     </ul>
 </div>
 </div>

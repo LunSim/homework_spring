@@ -4,22 +4,34 @@ import com.hrd.homework_spring.homework_spring.repository.ArticleRepository.Arti
 import com.hrd.homework_spring.homework_spring.repository.model.Article;
 import org.springframework.stereotype.Repository;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class ArticleRepositoryImp implements ArticleRepository {
-    private List<Article> articleList;
+    public List<Article> articleList;
+    public static int count;
+    public static int size;
+    public static int currentPage;
 
     public ArticleRepositoryImp() {
         articleList = new ArrayList<>();
-        articleList.add(new Article(1,"Love","Sim","OK","placeholder.png"));
+        for (int i =1; i <= 87 ; i++) {
+            articleList.add(new Article(i,"Love","Sim","OK","0a4c5574-6949-4a92-8cd9-43005355df76.jpg"));
+        }
+    }
+
+    @Override
+    public List<Article> paginate(int page, int limit) {
+        currentPage = page;
+        return articleList.stream().skip(page * limit).limit(limit).collect(Collectors.toCollection(ArrayList::new));
     }
 
     @Override
     public void add(Article article) {
         articleList.add(article);
+        return;
     }
 
     @Override
@@ -64,6 +76,13 @@ public class ArticleRepositoryImp implements ArticleRepository {
 
     @Override
     public List<Article> findAll() {
+        count = articleList.size();
         return articleList;
+    }
+
+    @Override
+    public int getLastId() {
+        size = articleList.size();
+        return (size != 0) ? articleList.get(size - 1).getId() : 1;
     }
 }

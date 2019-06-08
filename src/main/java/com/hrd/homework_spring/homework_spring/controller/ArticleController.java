@@ -1,16 +1,14 @@
 package com.hrd.homework_spring.homework_spring.controller;
 
+import com.hrd.homework_spring.homework_spring.repository.ArticleRepositoryImp;
 import com.hrd.homework_spring.homework_spring.repository.model.Article;
 import com.hrd.homework_spring.homework_spring.service.ArticleService.ArticleService;
 import com.hrd.homework_spring.homework_spring.service.ArticleServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.codec.multipart.Part;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -28,15 +26,21 @@ public class ArticleController {
     }
 
     @GetMapping("/")
-    public String index(ModelMap modelMap) {
-        modelMap.addAttribute("articles", articleService.findAll());
+    public String index(ModelMap modelMap, @RequestParam(defaultValue = "1") Integer page, @RequestParam( defaultValue = "10") Integer limit) {
+        System.out.println("Page : " + page + ", Limit : " + limit);
+        --page;
+        modelMap.addAttribute("articles", articleService.paginate(page,limit));
+        modelMap.addAttribute("currentPage", ArticleRepositoryImp.currentPage + 1);
+//        int lastPage = (ArticleRepositoryImp.count / limit) + (ArticleRepositoryImp.count % limit == 0 ? 0 : 1);
+//        System.out.println("page is"+lastPage);
+//        modelMap.addAttribute("lastPages",lastPage);
         return "/articles/index";
     }
 
     @GetMapping("/add")
     public String addForm(ModelMap modelMap) {
         Article article = new Article();
-        article.setId(((ArticleServiceImp) articleService).getId());
+        article.setId(articleService.getLastId() + 1);
         modelMap.addAttribute("article", article);
         return "/articles/add";
     }
