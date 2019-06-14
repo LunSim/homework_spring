@@ -19,6 +19,7 @@
                     <th style=" border-radius: 50px 0 0 0;"   th:text="#{st.id}">ID</th>
                     <th th:text="#{st.title}">Title</th>
                     <th th:text="#{st.author}">Author</th>
+                    <th th:text="#{st.title}">Category</th>
                     <th th:text="#{st.des}">Description</th>
                     <th th:text="#{st.thumbnail}">Thumbnail</th>
                     <th style=" border-radius: 0px 50px 0 0px;" th:text="#{st.action}">Action</th>
@@ -29,6 +30,7 @@
                     <td th:text="${article.id}">1</td>
                     <td th:text="${article.title}">lOVE</td>
                     <td th:text="${article.author}">SIM</td>
+                    <td th:text="${article.title}">oko</td>
                     <td th:text="${article.description}">LIKE</td>
                     <td>
                         <img id="thumbnail" th:src="'/img/' + ${article.image}"

@@ -1,6 +1,7 @@
 package com.hrd.homework_spring.homework_spring.repository.ArticleRepository;
 
 import com.hrd.homework_spring.homework_spring.repository.model.Article;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

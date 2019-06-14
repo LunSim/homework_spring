@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <!--Call fragment-->
+    <th:block th:replace="fragment/style"></th:block>
+</head>
+<body>
+<div class="container-fluid" style=" padding-right: 0; padding-left: 0;">
+    <!--Navbar -->
+    <div th:replace="fragment/navbar :: navbar"></div>
+    <!--/.Navbar -->
+    <form action="/category/update" th:method="post" th:object="${category}" enctype="multipart/form-data">
+        <div class="row  mt-3">
+            <div class="col col-lg-8 offset-2">
+                <div class="card">
+                    <div class="card-header">
+                        <head class="card-title d-flex justify-content-center">Article Management</head>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="">ID</label>
+                            <input type="text" class="form-control" readonly="readonly" th:field="${category.id}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Title</label>
+                            <input type="text" class="form-control" th:field="${category.name}">
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                        <a th:href="@{/category}" class="btn btn-sm btn-danger">Go Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+<th:block th:replace="fragment/script"></th:block>
+<script>
+    $(document).ready(function () {
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#img-preview').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#selector").change(function () {
+            readURL(this);
+        });
+    });
+</script>
+</body>
+</html>

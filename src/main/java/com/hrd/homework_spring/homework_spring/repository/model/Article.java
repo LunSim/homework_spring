@@ -4,18 +4,28 @@ public class Article {
     private int id;
     private String title;
     private String author;
+    private String category;
     private String description;
     private String image;
 
-    public Article(int id, String title, String author, String description, String image) {
+    public Article() {
+    }
+
+    public Article(int id, String title, String author, String category, String description, String image) {
         this.id = id;
         this.title = title;
         this.author = author;
+        this.category = category;
         this.description = description;
         this.image = image;
     }
 
-    public Article() {
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public int getId() {

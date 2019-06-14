@@ -11,6 +11,5 @@ public interface ArticleService {
     Article view(int id);
     List<Article> findAll();
     List<Article> paginate(int page, int limit);
-
     int getLastId();
 }

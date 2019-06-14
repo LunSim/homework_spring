@@ -1,0 +1,1 @@
+INSERT INTO tb_categories(name) VALUES('Sim'),('kaka'),('lala');

@@ -18,7 +18,7 @@ public class ArticleRepositoryImp implements ArticleRepository {
     public ArticleRepositoryImp() {
         articleList = new ArrayList<>();
         for (int i =1; i <= 87 ; i++) {
-            articleList.add(new Article(i,"Love","Sim","OK","0a4c5574-6949-4a92-8cd9-43005355df76.jpg"));
+            articleList.add(new Article(i,"Love","Sim","Romatic","OK","0a4c5574-6949-4a92-8cd9-43005355df76.jpg"));
         }
     }
 
