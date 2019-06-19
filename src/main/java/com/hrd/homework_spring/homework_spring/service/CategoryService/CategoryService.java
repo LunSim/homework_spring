@@ -5,4 +5,5 @@ public interface CategoryService {
     List<Category> findCategoriesAll();
     void update(Category category);
     Category findOne(int id);
+    void delete(int id);
 }

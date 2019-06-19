@@ -29,29 +29,33 @@
 <div class="container-fluid" th:object="${article}" style="padding-right: 0; padding-left: 0;">
     <div th:replace="fragment/navbar :: navbar"></div>
     <div class="card" style="width: 75%; margin: auto;">
-        <h1 style="text-align: center;" class="card-header">Article Information !</h1>
+        <h1 style="text-align: center;" class="card-header" th:text="#{st.articleInfo}">Article Information !</h1>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
-                <p>ID :</p>
+                <p th:text="#{st.id}">ID :</p>
                 <span th:text="*{id}"></span>
             </li>
             <li class="list-group-item">
-                <p>Title :</p>
+                <p th:text="#{st.title}">Title :</p>
                 <span th:text="*{title}"></span>
             </li>
             <li class="list-group-item">
-                <p>Author :</p>
+                <p th:text="#{st.author}">Author :</p>
                 <span th:text="*{author}"></span>
             </li>
             <li class="list-group-item">
-                <p>Description</p>
+                <p th:text="#{st.category}">Category :</p>
+                <span th:text="*{category}"></span>
+            </li>
+            <li class="list-group-item">
+                <p th:text="#{st.des}">Description</p>
                 <span th:text="*{description}"></span>
             </li>
         </ul>
-        <div class="container" style="text-align: center;">
+        <div class="container" style="text-align: center; border-radius: 5px; ">
             <img width="600px" src="" th:src="'/img/' + ${article.image}" alt="Thumbnails">
         </div>
-        <a href="" th:href="@{/}" class="btn blue-gradient" style="width: 20%; margin: 25px auto; -webkit-border-radius: 50px;-moz-border-radius: 50px;border-radius: 50px; ">Go Back</a>
+        <a href="" th:href="@{/}" class="btn blue-gradient" style="width: 25%; margin: 25px auto; -webkit-border-radius: 50px;-moz-border-radius: 50px;border-radius: 50px; " th:text="#{st.add.btnBack}">Go Back</a>
     </div>
 </div>
 <th:block th:replace="fragment/script"></th:block>

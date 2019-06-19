@@ -11,27 +11,40 @@
 <div class="container-fluid" style="padding-right: 0; padding-left: 0;">
     <div th:replace="fragment/navbar :: navbar"></div>
     <div class="Card-Controll">
-        <a th:href="@{/add}" class="btn btn-sm btn-danger" th:text="#{btn.add_new_article}">ADD NEW ARTICLE</a>
-        <div class="card" style="border-radius: 50px 50px 0 0 !important;">
+        <a style="margin-top: 20px;" th:href="@{/add}" class="btn btn-sm btn-danger" th:text="#{btn.add_new_article}">ADD NEW ARTICLE</a>
+        <div class="cate_div" style="width: 23%;float: right; margin-top: 20px;">
+            <select style="line-height: 1.5; color: #495057;background-color: #fff;transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;padding: .375rem .75rem;border: 1px solid #ced4da;border-radius: .25rem;">
+                <option value="">Select One</option>
+                <option value="Roman">Romantic</option>
+                <option value="Love">Love the air</option>
+                <option value="Story">Ok You win</option>
+            </select>
+        </div>
+        <form class="form-inline" style="float: right;margin-top: 20px;">
+            <div class="md-form my-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            </div>
+        </form>
+        <div class="card" style="border-radius: 50px 50px 0 0 !important;margin-top: 34px !important;">
             <table class="table table-sm table-stripped">
                 <thead class="thead-dark">
                 <tr>
                     <th style=" border-radius: 50px 0 0 0;"   th:text="#{st.id}">ID</th>
-                    <th th:text="#{st.title}">Title</th>
-                    <th th:text="#{st.author}">Author</th>
-                    <th th:text="#{st.title}">Category</th>
-                    <th th:text="#{st.des}">Description</th>
-                    <th th:text="#{st.thumbnail}">Thumbnail</th>
-                    <th style=" border-radius: 0px 50px 0 0px;" th:text="#{st.action}">Action</th>
+                    <th th:text="#{st.title}">TITLE</th>
+                    <th th:text="#{st.author}">AUTHOR</th>
+                    <th th:text="#{st.category}">CATEGORY</th>
+                    <th th:text="#{st.des}">DESCRIPTION</th>
+                    <th th:text="#{st.thumbnail}">THUMBNAIL</th>
+                    <th style=" border-radius: 0px 50px 0 0px;" th:text="#{st.action}">ACTION</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="article: ${articles}">
-                    <td th:text="${article.id}">1</td>
-                    <td th:text="${article.title}">lOVE</td>
-                    <td th:text="${article.author}">SIM</td>
-                    <td th:text="${article.title}">oko</td>
-                    <td th:text="${article.description}">LIKE</td>
+                    <td th:text="${article.id}"></td>
+                    <td th:text="${article.title}"></td>
+                    <td th:text="${article.author}"></td>
+                    <td th:text="${article.category}"></td>
+                    <td th:text="${article.description}"></td>
                     <td>
                         <img id="thumbnail" th:src="'/img/' + ${article.image}"
                              style=" margin: 0 auto; display: block" alt=""/>

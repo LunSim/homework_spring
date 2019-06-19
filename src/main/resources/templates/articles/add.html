@@ -35,6 +35,16 @@
                             <input type="text" class="form-control" th:field="*{author}">
                         </div>
                         <div class="form-group">
+                            <label th:text="#{st.category}">Category</label>
+                            <!--<input type="text" class="form-control" th:field="*{category}">-->
+                            <select style="width: 100%; line-height: 1.5; color: #495057;background-color: #fff;transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;padding: .375rem .75rem;border: 1px solid #ced4da;border-radius: .25rem;">
+                                <option value="">Select One</option>
+                                <option value="Roman">Romantic</option>
+                                <option value="Love">Love the air</option>
+                                <option value="Story">Ok You win</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label th:text="#{st.des}">Description</label>
                             <input type="text" class="form-control" th:field="*{description}">
                         </div>

@@ -24,3 +24,7 @@ nav.mb-1.navbar.navbar-expand-lg.navbar-dark.orange.lighten-1 {
     background-color: #423a63 !important;
     border-color: #423a63 !important;
 }
+.cate_div {
+    width: 23% !important;
+    float: right !important;
+}

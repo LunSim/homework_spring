@@ -1,10 +1,6 @@
 package com.hrd.homework_spring.homework_spring.repository.CategoryReposity;
-import com.hrd.homework_spring.homework_spring.repository.model.Article;
 import com.hrd.homework_spring.homework_spring.repository.model.Category;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,4 +23,11 @@ public interface CategoryRepository {
             @Result(property = "name",column = "name")
     })
     Category findOne(int id);
+
+    @Delete("DELETE FROM tb_categories WHERE id = #{id}")
+    @Results({
+            @Result(property = "id",column = "id"),
+            @Result(property = "name",column = "name")
+    })
+    void delete(int id);
 }

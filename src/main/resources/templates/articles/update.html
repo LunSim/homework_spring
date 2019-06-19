@@ -17,26 +17,36 @@
             <div class="col col-lg-8 offset-2">
                 <div class="card">
                     <div class="card-header">
-                        <head class="card-title d-flex justify-content-center">Article Management</head>
+                        <head class="card-title d-flex justify-content-center" th:text="#{st.add.article_mgt}">Article Management</head>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="">ID</label>
+                            <label for="" th:text="#{st.id}">ID</label>
                             <input type="text" class="form-control" readonly="readonly" th:field="${article.id}">
                         </div>
                         <div class="form-group">
-                            <label for="">Title</label>
+                            <label for="" th:text="#{st.title}">Title</label>
                             <input type="text" class="form-control" th:field="${article.title}">
                         </div>
                         <div class="form-group">
-                            <label for="">Author</label>
+                            <label for="" th:text="#{st.author}">Author</label>
                             <input type="text" class="form-control" th:field="${article.author}">
                         </div>
                         <div class="form-group">
-                            <label for="">Description</label>
+                            <label for="" th:text="#{st.category}">Category</label>
+                            <!--<input type="text" class="form-control" th:field="${article.category}">-->
+                            <select style="width: 100%; line-height: 1.5; color: #495057;background-color: #fff;transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;padding: .375rem .75rem;border: 1px solid #ced4da;border-radius: .25rem;">
+                                <option value="">Select One</option>
+                                <option value="Roman">Romantic</option>
+                                <option value="Love">Love the air</option>
+                                <option value="Story">Ok You win</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="" th:text="#{st.des}">Description</label>
                             <input type="text" class="form-control" th:field="${article.description}">
                         </div>
-                        <p>Thumbnail</p>
+                        <p th:text="#{st.thumbnail}">Thumbnail</p>
                         <div class="custom-file">
                             <input type="file" name="file" id="selector" class="custom-file-label" accept="image/*">
                             <label class="custom-file-label" for="selector">Chose Picture</label>
@@ -47,8 +57,8 @@
                     </div>
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-sm btn-primary">ADD</button>
-                        <a th:href="@{/}" class="btn btn-sm btn-danger">Go Back</a>
+                        <button type="submit" class="btn btn-sm btn-primary" th:text="#{st.add.btnAdd}">ADD</button>
+                        <a th:href="@{/}" class="btn btn-sm btn-danger" th:text="#{st.add.btnBack}">Go Back</a>
                     </div>
                 </div>
             </div>

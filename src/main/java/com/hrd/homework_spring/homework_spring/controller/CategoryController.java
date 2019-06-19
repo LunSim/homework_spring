@@ -4,12 +4,7 @@ import com.hrd.homework_spring.homework_spring.service.CategoryService.CategoryS
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CategoryController {
@@ -35,4 +30,11 @@ public class CategoryController {
         categoryService.update(category);
         return "redirect:/category";
     }
+
+    @GetMapping("/category/delete/{id}")
+    public String deleteCategory(@PathVariable int id){
+        categoryService.delete(id);
+        return "redirect:/category";
+    }
+
 }

@@ -3,7 +3,6 @@ package com.hrd.homework_spring.homework_spring.controller;
 import com.hrd.homework_spring.homework_spring.repository.ArticleRepositoryImp;
 import com.hrd.homework_spring.homework_spring.repository.model.Article;
 import com.hrd.homework_spring.homework_spring.service.ArticleService.ArticleService;
-import com.hrd.homework_spring.homework_spring.service.ArticleServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -107,8 +106,6 @@ public class ArticleController {
                 return;
             }
         }
-//        else
-//            article.setImage("placeholder.png");
         if(images != null) {
             article.setImage(images);
             images = null;

@@ -20,14 +20,6 @@ public class Article {
         this.image = image;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public int getId() {
         return id;
     }
@@ -51,7 +43,13 @@ public class Article {
     public void setAuthor(String author) {
         this.author = author;
     }
+    public String getCategory() {
+        return category;
+    }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
     public String getDescription() {
         return description;
     }
@@ -74,6 +72,7 @@ public class Article {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
+                ", category='" + category + '\'' +
                 ", description='" + description + '\'' +
                 ", image='" + image + '\'' +
                 '}';
